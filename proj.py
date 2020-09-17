@@ -12,6 +12,7 @@ if __name__ == "__main__":
     L_tube = 0.5 #Length of Launch tube (ft) (UPDATE BASED ON CAD MODEL)
     h_launch = 0 #Height at launch position (UPDATE BASED ON CAD MODLE)
     x_f = 25 #Desired launcher distance (UPDATE BASED ON USER INPUT)
+    x_tip = 0.494641666667 #Distance from launch location to front of launcher (ft)
     #Variables (iterate for angles 0 -> 45 degrees, accepting only if the y_1 and y_2 values have a very small difference (i.e. 0.01)
     lowest_diff = 100 #Dummy variable, actual values will be very small, positive non zero differences between y_1 and y_2 equations
     optimal_angle = 45
@@ -22,8 +23,9 @@ if __name__ == "__main__":
         V_act = math.sqrt(((k * (d**2))/(m_b + m_s)) - (2 * g * y_delta))
         v_i = V_act
         y_i = L_tube * math.sin(y) + h_launch
+        x_i = x_tip+ (math.cos(y) * L_tube)
         #First function easy, isolate x
-        x_1 = x_f / (math.cos(y) * v_i)
+        x_1 = (x_f - x_i) / (math.cos(y) * v_i)
         #Second function more difficult, need to take quadratic equation and get roots (a,b,and c)? (take only the negative answer?)
         a = -4.9
         b = math.sin(y) * v_i
@@ -47,7 +49,7 @@ if __name__ == "__main__":
     time = 0
     while (1):
         height = (-4.9 * (time ** 2)) + (math.sin(optimal_angle) * optimal_speed * time)
-        distance = math.cos(optimal_angle) * optimal_speed * time
+        distance = (math.cos(optimal_angle) * optimal_speed * time) - x_i
         time += .05 #increase step by 1 foot
         if height < 0:
             break
