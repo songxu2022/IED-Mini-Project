@@ -1,6 +1,7 @@
 import math
 import matplotlib.pyplot as plt
 import tkinter as tk
+import numpy as np
 
 def mymain(k, d, x_f):
     #Constants (may need to pull from user input)
@@ -48,7 +49,7 @@ def mymain(k, d, x_f):
     while (1):
         height = (-4.9 * (time ** 2)) + (math.sin(optimal_angle) * optimal_speed * time)
         distance = (math.cos(optimal_angle) * optimal_speed * time) + x_i
-        time += .05 #increase step by 1 foot
+        time += .01 #increase step by 1 foot
         if height < 0:
             break
         x_values.append(distance)
@@ -62,6 +63,11 @@ def mymain(k, d, x_f):
     # giving a title
     plt.title("Projectile Motion Trajectory Graph")
     # function to show the plot
+   
+    my_x_ticks = np.arange(0,31,1)
+    my_y_ticks = np.arange(0,31,1)
+    plt.xticks(my_x_ticks)
+    plt.yticks(my_y_ticks)
     plt.savefig("spring.png",dpi = 72)
     plt.show()
     
@@ -76,7 +82,7 @@ window.geometry('500x300')
 l = tk.Label(window, text ='Distance', bg='white', fg='black',font=('Arial', 12), width=20)
 l.pack()
 v = tk.StringVar()
-mylabel = tk.Scale(window, from_ = 0, to = 25, orient = 'horizontal', resolution = 1, tickinterval = 5, length = 600)
+mylabel = tk.Scale(window, from_ = 0, to = 30, orient = 'horizontal', resolution = 1, tickinterval = 5, length = 600)
 mylabel.pack()
 distance = mylabel.get()
 
@@ -91,17 +97,17 @@ def print_selection():
     newwindow = tk.Toplevel(window)
     newwindow.geometry('500x300')
     newwindow.title(value)
-    canvas = tk.Canvas(newwindow, bg='green', height=900, width=900)
+    canvas = tk.Canvas(newwindow, bg='white', height=900, width=900)
     image_file = ".\\"
     if(value == "Spring1"):
-        mymain(167, 0.0625, x)
+        mymain(167*12, 0.0625, x)
         image_file = tk.PhotoImage(file="spring.png")
     if(value == "Spring2"):
-        mymain(104,0.0833,x)
-        image_file = tk.PhotoImage(file="spring2.png")
+        mymain(104*12,0.0833,x)
+        image_file = tk.PhotoImage(file="spring.png")
     if(value == "Spring3"):
-        mymain(215,0.0541666,x)
-        image_file = tk.PhotoImage(file="spring3.png")
+        mymain(215*12,0.0541666,x)
+        image_file = tk.PhotoImage(file="spring.png")
     image = canvas.create_image(0, 0, anchor='nw',image=image_file)
     canvas.pack()
     newwindow.mainloop()
