@@ -7,8 +7,6 @@ def mymain(k, d, x_f):
     m_b = 0.0059375 #mass of ball
     m_s = 0.01 #mass of launcher follower thing
     g = 32.174 #gravitational constant
-    k = 600 #update with new .h file
-    d = 0.0833 #update with .h file
     L_tube = 0.5 #Length of Launch tube (ft) (UPDATE BASED ON CAD MODEL)
     h_launch = 0 #Height at launch position (UPDATE BASED ON CAD MODLE)
     #x_f = 25 Desired launcher distance (UPDATE BASED ON USER INPUT)
