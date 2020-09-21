@@ -64,8 +64,8 @@ def mymain(k, d, x_f):
     plt.title("Projectile Motion Trajectory Graph")
     # function to show the plot
    
-    my_x_ticks = np.arange(0,31,1)
-    my_y_ticks = np.arange(0,31,1)
+    my_x_ticks = np.arange(0,31,5)
+    my_y_ticks = np.arange(0,11,1)
     plt.xticks(my_x_ticks)
     plt.yticks(my_y_ticks)
     plt.savefig("spring.png",dpi = 72)
