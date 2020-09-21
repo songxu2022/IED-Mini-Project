@@ -6,10 +6,10 @@ import numpy as np
 def mymain(k, d, x_f):
     #Constants (may need to pull from user input)
     m_b = 0.0059375 #mass of ball
-    m_s = 0.01 #mass of launcher follower thing
+    m_s = 0.02804 #mass of launcher follower thing
     g = 32.174 #gravitational constant
-    L_tube = 0.5 #Length of Launch tube (ft) (UPDATE BASED ON CAD MODEL)
-    h_launch = 0 #Height at launch position (UPDATE BASED ON CAD MODLE)
+    L_tube = 0.44643 #Length of Launch tube (ft) (UPDATE BASED ON CAD MODEL)
+    h_launch = 0.1595 #Height at launch position (UPDATE BASED ON CAD MODLE)
     #x_f = 25 Desired launcher distance (UPDATE BASED ON USER INPUT)
     x_tip = 0.494641666667 #Distance from launch location to front of launcher (ft)
     #Variables (iterate for angles 0 -> 45 degrees, accepting only if the y_1 and y_2 values have a very small difference (i.e. 0.01)
